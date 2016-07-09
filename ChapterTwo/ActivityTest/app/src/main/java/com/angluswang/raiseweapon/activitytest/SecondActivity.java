@@ -3,6 +3,7 @@ package com.angluswang.raiseweapon.activitytest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -18,6 +19,7 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_second);
+        Log.d("SecondActivity", this.toString());
 
 //        Intent intent = getIntent();
 //        String data = intent.getStringExtra("extra_data");
@@ -27,16 +29,7 @@ public class SecondActivity extends Activity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("data_return", "Hello FirstActivity from SecondActivity");
-                /** Standard activity result: operation canceled. */
-//                public static final int RESULT_CANCELED    = 0;
-                /** Standard activity result: operation succeeded. */
-//                public static final int RESULT_OK           = -1;
-                /** Start of user-defined activity results. */
-//                public static final int RESULT_FIRST_USER   = 1;
-                setResult(RESULT_OK, intent);
-                finish();
+               startActivity(new Intent(SecondActivity.this, FirstActivity.class));
             }
         });
     }

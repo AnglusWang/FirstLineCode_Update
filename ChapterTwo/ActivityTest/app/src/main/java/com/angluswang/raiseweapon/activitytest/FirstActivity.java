@@ -11,8 +11,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
 
-import static android.content.ContentValues.TAG;
-
 public class FirstActivity extends Activity {
 
     @Override
@@ -21,13 +19,13 @@ public class FirstActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏标题
         setContentView(R.layout.layout_first);
 
-        Log.d(TAG, "onCreate: " + this.toString());
+        Log.d("FirstActivity", this.toString());
 
         Button btn1 = (Button) findViewById(R.id.btn_1);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FirstActivity.this, FirstActivity.class));
+                startActivity(new Intent(FirstActivity.this, SecondActivity.class));
             }
         });
 
