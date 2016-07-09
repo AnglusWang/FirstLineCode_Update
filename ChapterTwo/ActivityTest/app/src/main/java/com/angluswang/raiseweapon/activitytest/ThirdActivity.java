@@ -2,6 +2,7 @@ package com.angluswang.raiseweapon.activitytest;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 /**
@@ -15,5 +16,7 @@ public class ThirdActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_third);
+
+        Log.d("ThirdActivity", "Task id is " + getTaskId());
     }
 }

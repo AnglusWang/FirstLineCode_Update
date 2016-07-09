@@ -19,7 +19,7 @@ public class SecondActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_second);
-        Log.d("SecondActivity", this.toString());
+        Log.d("SecondActivity", "Task id is " + getTaskId());
 
 //        Intent intent = getIntent();
 //        String data = intent.getStringExtra("extra_data");
@@ -29,7 +29,7 @@ public class SecondActivity extends Activity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(SecondActivity.this, FirstActivity.class));
+               startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
             }
         });
     }

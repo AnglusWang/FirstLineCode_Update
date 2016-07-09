@@ -19,7 +19,7 @@ public class FirstActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);  //隐藏标题
         setContentView(R.layout.layout_first);
 
-        Log.d("FirstActivity", this.toString());
+        Log.d("FirstActivity", "Task id is " + getTaskId());
 
         Button btn1 = (Button) findViewById(R.id.btn_1);
         btn1.setOnClickListener(new View.OnClickListener() {
