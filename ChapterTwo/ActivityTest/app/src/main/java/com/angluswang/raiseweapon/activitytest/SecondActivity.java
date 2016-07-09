@@ -29,7 +29,7 @@ public class SecondActivity extends Activity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
+                startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
             }
         });
     }
