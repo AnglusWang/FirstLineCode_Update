@@ -1,6 +1,5 @@
 package com.angluswang.raiseweapon.activitytest;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,7 @@ import android.widget.Button;
  * 第二个活动
  */
 
-public class SecondActivity extends Activity {
+public class SecondActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

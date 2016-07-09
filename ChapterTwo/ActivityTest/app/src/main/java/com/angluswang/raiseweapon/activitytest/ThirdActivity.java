@@ -1,6 +1,5 @@
 package com.angluswang.raiseweapon.activitytest;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
@@ -10,7 +9,7 @@ import android.view.Window;
  * 第二个活动
  */
 
-public class ThirdActivity extends Activity {
+public class ThirdActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
