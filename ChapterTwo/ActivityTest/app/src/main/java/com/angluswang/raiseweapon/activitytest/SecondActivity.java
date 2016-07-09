@@ -45,4 +45,10 @@ public class SecondActivity extends Activity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("SecondActivity", "onDestroy()");
+    }
 }

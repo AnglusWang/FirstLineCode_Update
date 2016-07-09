@@ -79,4 +79,10 @@ public class FirstActivity extends Activity {
         }
         return true;
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("FirstActivity", "onRestart()");
+    }
 }
