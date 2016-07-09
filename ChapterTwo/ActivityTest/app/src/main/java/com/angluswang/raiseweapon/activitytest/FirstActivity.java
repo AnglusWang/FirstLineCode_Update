@@ -24,7 +24,7 @@ public class FirstActivity extends BaseActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FirstActivity.this, SecondActivity.class));
+                SecondActivity.actionStart(FirstActivity.this, "data1", "data2");
             }
         });
 

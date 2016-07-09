@@ -1,5 +1,6 @@
 package com.angluswang.raiseweapon.activitytest;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,19 @@ public class SecondActivity extends BaseActivity {
                 startActivity(new Intent(SecondActivity.this, ThirdActivity.class));
             }
         });
+    }
+
+    /**
+     * 启动活动 SecondActivity 的最佳方法
+     * @param context
+     * @param data1
+     * @param data2
+     */
+    public static void actionStart(Context context, String data1, String data2) {
+        Intent intent =  new Intent(context, SecondActivity.class);
+        intent.putExtra("param1", data1);
+        intent.putExtra("param2", data2);
+        context.startActivity(intent);
     }
 
     /**
