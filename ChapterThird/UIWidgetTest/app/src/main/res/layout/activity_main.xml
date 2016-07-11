@@ -20,4 +20,12 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="This is Button"/>
+
+    <EditText
+        android:id="@+id/et_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Type something here"
+        android:maxLines="2"/>
+
 </LinearLayout>
