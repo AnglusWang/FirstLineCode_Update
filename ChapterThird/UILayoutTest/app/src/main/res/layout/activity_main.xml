@@ -5,24 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/input_message"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:text="Button1"/>
+        android:layout_weight="1"
+        android:hint="Type something"/>
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/send"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Button2"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:text="Button3"/>
+        android:layout_weight="1"
+        android:text="Send"/>
 </LinearLayout>
