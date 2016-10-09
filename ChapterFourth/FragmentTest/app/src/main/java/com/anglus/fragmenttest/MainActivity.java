@@ -27,6 +27,7 @@ public class MainActivity extends Activity
                 FragmentManager fm = getFragmentManager();
                 FragmentTransaction transaction = fm.beginTransaction();
                 transaction.replace(R.id.right_layout, fragment);
+                transaction.addToBackStack(null);// 添加到返回栈中
                 transaction.commit();
                 break;
             default:
