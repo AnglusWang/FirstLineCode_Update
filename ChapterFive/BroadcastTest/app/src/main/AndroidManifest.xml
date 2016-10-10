@@ -25,6 +25,12 @@
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
+        <!--自定义广播-->
+        <receiver android:name=".MyBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.broadcasttest.MY_BROADCAST"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

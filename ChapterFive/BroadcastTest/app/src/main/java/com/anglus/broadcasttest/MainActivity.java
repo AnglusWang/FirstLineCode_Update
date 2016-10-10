@@ -8,6 +8,8 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -24,6 +26,15 @@ public class MainActivity extends Activity {
         mIntentFilter.addAction("android.net.com.CONNECTIVITY_CHANGE");
         mNetworkChangerReceiver = new NetworkChangerReceiver();
         registerReceiver(mNetworkChangerReceiver, mIntentFilter);
+
+        Button button = (Button) findViewById(R.id.btn_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent("com.broadcasttest.MY_BROADCAST");
+                sendBroadcast(intent);// 发送标准广播
+            }
+        });
     }
 
     private class NetworkChangerReceiver extends BroadcastReceiver {
