@@ -32,7 +32,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent("com.broadcasttest.MY_BROADCAST");
-                sendBroadcast(intent);// 发送标准广播
+//                sendBroadcast(intent);// 发送标准广播
+                sendOrderedBroadcast(intent, null);// 发送有序广播
             }
         });
     }

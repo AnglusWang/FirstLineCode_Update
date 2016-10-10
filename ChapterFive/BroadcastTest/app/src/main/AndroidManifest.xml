@@ -27,8 +27,14 @@
         </receiver>
         <!--自定义广播-->
         <receiver android:name=".MyBroadcastReceiver">
-            <intent-filter>
+            <intent-filter android:priority="100">
                 <action android:name="com.broadcasttest.MY_BROADCAST"/>
+            </intent-filter>
+        </receiver>
+        <!--用于测试，发送有序广播-->
+        <receiver android:name=".AnotherBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.braodcasttest.MY_BROADCAST"/>
             </intent-filter>
         </receiver>
     </application>
