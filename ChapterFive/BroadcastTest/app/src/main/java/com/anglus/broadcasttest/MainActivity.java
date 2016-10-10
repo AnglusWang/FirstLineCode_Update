@@ -43,4 +43,13 @@ public class MainActivity extends Activity {
             }
         }
     }
+
+    public class BootCompleteReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(MainActivity.this, "Boot complete",
+                    Toast.LENGTH_SHORT).show();
+        }
+    }
 }
