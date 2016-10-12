@@ -49,5 +49,16 @@ public class MainActivity extends Activity {
                 db.insert("Book", null, values);// 插入第二条数据
             }
         });
+
+        Button updateDate = (Button) findViewById(R.id.update_data);
+        updateDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                ContentValues values = new ContentValues();
+                values.put("price", 10.99);
+                db.update("Book", values, "name=?", new String[]{"The Da Vin Code"});
+            }
+        });
     }
 }
