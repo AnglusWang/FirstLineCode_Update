@@ -60,5 +60,14 @@ public class MainActivity extends Activity {
                 db.update("Book", values, "name=?", new String[]{"The Da Vin Code"});
             }
         });
+
+        Button delete_data = (Button) findViewById(R.id.delete_data);
+        delete_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                db.delete("Book", "pages > ?", new String[]{"500"});
+            }
+        });
     }
 }
