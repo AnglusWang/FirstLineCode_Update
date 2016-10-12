@@ -2,12 +2,16 @@ package com.anglus.databasetest;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
+
+    private static final String TAG = "MainActivity";
 
     private MyDatabaseHelper dbHelper;
 
@@ -67,6 +71,31 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 SQLiteDatabase db = dbHelper.getWritableDatabase();
                 db.delete("Book", "pages > ?", new String[]{"500"});
+            }
+        });
+
+        Button query_data = (Button) findViewById(R.id.query_data);
+        query_data.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                // 查询 Book 表中所有的数据
+                Cursor cursor = db.query("Book", null, null, null, null, null, null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        // 遍历 Cursor 对象，取出数据并打印
+                        String name = cursor.getString(cursor.getColumnIndex("name"));
+                        String author = cursor.getString(cursor.getColumnIndex("author"));
+                        int pages = cursor.getInt(cursor.getColumnIndex("pages"));
+                        double price = cursor.getDouble(cursor.getColumnIndex("price"));
+
+                        Log.d(TAG, "book name is " + name);
+                        Log.d(TAG, "book author is " + author);
+                        Log.d(TAG, "book pages is " + pages);
+                        Log.d(TAG, "book price is " + price);
+                    } while (cursor.moveToNext());
+                }
+                cursor.close();
             }
         });
     }
