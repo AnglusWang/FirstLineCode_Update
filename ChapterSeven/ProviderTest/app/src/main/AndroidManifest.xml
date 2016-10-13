@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.anglus.databasetest">
+          package="com.anglus.providertest">
 
     <application
         android:allowBackup="true"
@@ -15,13 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <!-- 内容提供者 -->
-        <provider
-            android:name=".DatabaseProvider"
-            android:authorities="com.anglus.databasetest.provider"
-            android:exported="true">
-
-        </provider>
     </application>
 
 </manifest>

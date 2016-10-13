@@ -18,7 +18,7 @@ public class DatabaseProvider extends ContentProvider {
     public static final int CATEGORY_DIR = 2;
     public static final int CATEGORY_ITEM = 3;
 
-    public static final String AUTHORITY = "com.anglus.databasetest.databaseprovider";
+    public static final String AUTHORITY = "com.anglus.databasetest.provider";
 
     private static UriMatcher sUriMatcher;
     private MyDatabaseHelper dbHelper;
@@ -72,13 +72,13 @@ public class DatabaseProvider extends ContentProvider {
     public String getType(Uri uri) {
         switch (sUriMatcher.match(uri)) {
             case BOOK_DIR:
-                return "vnd.android.cursor.dir/vnd.com.anglus.databasetest.databaseprovider.book";
+                return "vnd.android.cursor.dir/vnd.com.anglus.databasetest.provider.book";
             case BOOK_ITEM:
-                return "vnd.android.cursor.item/vnd.com.anglus.databasetest.databaseprovider.book";
+                return "vnd.android.cursor.item/vnd.com.anglus.databasetest.provider.book";
             case CATEGORY_DIR:
-                return "vnd.android.cursor.dir/vnd.com.anglus.databasetest.databaseprovider.category";
+                return "vnd.android.cursor.dir/vnd.com.anglus.databasetest.provider.category";
             case CATEGORY_ITEM:
-                return "vnd.android.cursor.item/vnd.com.anglus.databasetest.databaseprovider.category";
+                return "vnd.android.cursor.item/vnd.com.anglus.databasetest.provider.category";
             default:
                 break;
         }
