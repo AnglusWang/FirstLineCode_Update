@@ -6,9 +6,13 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import java.io.File;
 
 public class MainActivity extends Activity {
 
@@ -30,6 +34,22 @@ public class MainActivity extends Activity {
                 builder.setSmallIcon(R.mipmap.ic_launcher);
                 builder.setContentTitle("My notification");
                 builder.setContentText("Hello World!");
+
+                // 控制通知的声音
+                Uri soundUri = Uri.fromFile(
+                        new File("/system/media/audio/ringtones/basic_tone.ogg"));
+                builder.setSound(soundUri);
+
+                // 控制通知的振动 --- 下标偶数表示静止时长，奇数表示振动时长
+                long[] vibrates = {0, 1000, 1000, 1000};
+                builder.setVibrate(vibrates);
+
+                // 控制 LED 灯
+                builder.setLights(Color.RED, 1000, 1000);
+                builder.build().flags = Notification.FLAG_SHOW_LIGHTS;
+
+                // 设置系统默认效果
+                builder.setDefaults(Notification.DEFAULT_ALL);
 
                 // 设置通知的点击行为：这里启动一个 Activity
                 Intent intent = new Intent(MainActivity.this, NotificationActivity.class);
