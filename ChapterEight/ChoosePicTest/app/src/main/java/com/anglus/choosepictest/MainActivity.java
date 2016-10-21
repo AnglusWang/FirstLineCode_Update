@@ -127,7 +127,9 @@ public class MainActivity extends Activity {
             imagePath = cursor.getString(idx);
             cursor.close();
         }
-        displayImage(imagePath);// 根据图片路径显示图片
+        // 根据图片路径显示图片
+        // 图片压缩
+        displayImage(PictureUtil.getSmallBitmap(imagePath, 480, 800));
     }
 
     private void handleImageBeforeKitKat(Intent data) {
@@ -165,5 +167,9 @@ public class MainActivity extends Activity {
             Toast.makeText(this, "failed to get Image",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void displayImage(Bitmap bitmap) {
+        picture.setImageBitmap(bitmap);
     }
 }
