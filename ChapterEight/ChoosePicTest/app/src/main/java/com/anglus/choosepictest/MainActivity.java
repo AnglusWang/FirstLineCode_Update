@@ -2,7 +2,6 @@ package com.anglus.choosepictest;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,9 +10,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,8 +19,6 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import static android.content.ContentValues.TAG;
 
 public class MainActivity extends Activity {
 
@@ -122,26 +117,15 @@ public class MainActivity extends Activity {
     private void handleImageOnKitKat(Intent data) {
         String imagePath = null;
         Uri uri = data.getData();
-        Log.d(TAG, "handleImageOnKitKat: uri -> " + uri);
-        if (DocumentsContract.isDocumentUri(this, uri)) {
-            // 如果是 document 类型的 Uri，则通过 document id 处理
-            String docId = DocumentsContract.getDocumentId(uri);
-            if ("com.android.providers.media.documents"
-                    .equals(uri.getAuthority())) {
-                String id = docId.split(":")[1];// 解析出数字格式的 id
-                String selection = MediaStore.Images.Media._ID + "=" + id;
-                imagePath = getImagePath(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, selection);
-            } else if ("com.android.providers.downloads.documents"
-                    .equals(uri.getAuthority())) {
-                Uri contentUri = ContentUris.withAppendedId(
-                        Uri.parse("content://downloads/public_downloads"),
-                        Long.valueOf(docId));
-                imagePath = getImagePath(contentUri, null);
-            }
-        } else if ("content".equalsIgnoreCase(uri.getScheme())) {
-            // 如果不是 document 类型的 Uri， 则使用普通方式处理
-            imagePath = getImagePath(uri, null);
+
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+        if (cursor == null) {
+            imagePath = uri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            imagePath = cursor.getString(idx);
+            cursor.close();
         }
         displayImage(imagePath);// 根据图片路径显示图片
     }
